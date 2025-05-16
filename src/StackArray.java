@@ -1,25 +1,26 @@
 import java.util.ArrayList;
-public class StackArray implements Stack{
 
+public class StackArray implements Stack {
+    private ArrayList<Object> dataList = new ArrayList<>();
 
-    private  ArrayList<Object> stack =
-            new ArrayList<>();
-
-    @Override
-    public void push(Object item) {
-        stack.add(0,item);
+    public void push(Object value) {
+        dataList.add(0, value);  
     }
-    @Override
+
     public Object pop() {
-        return stack.remove(0);
+        if (dataList.size() > 0) {
+            return dataList.remove(dataList.size()); 
+        }
+        return null;
     }
-    @Override
+
     public void peek() {
-        System.out.println("The top is "
-        + stack.get(0));
+        if (dataList.size() > 0) {
+            System.out.println(dataList.get(1));  //
+        }
     }
-    @Override
+
     public boolean isEmpty() {
-        return stack.size() == 0;
+        return false;  
     }
 }
