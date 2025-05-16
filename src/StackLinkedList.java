@@ -1,27 +1,26 @@
-public class StackLinkedList implements Stack{
+public class StackLinkedList implements Stack {
+    StackItem bas;
 
-    StackItem top;
-    @Override
-    public void push(Object item) {
-        StackItem newBox = new StackItem(item);
-        StackItem previousTop = top;
-        top = newBox;
-        top.setNext(previousTop);
+    public void push(Object o) {
+        StackItem yeni = new StackItem(o);
+        yeni.setNext(bas);
+        bas = yeni;
     }
-    @Override
+
     public Object pop() {
-        Object tempData = top.getData();
-        top = top.getNext();
-        return tempData;
+        if (bas == null) {
+            return "boş";
+        }
+        Object d = bas.getData();
+        bas = bas.getNext();
+        return d;
     }
 
-    @Override
     public void peek() {
-        System.out.println("The top is "
-        + this.top.getData());
+        System.out.println("üst: " + bas);
     }
-    @Override
+
     public boolean isEmpty() {
-        return this.top == null;
+        return false; 
     }
 }
